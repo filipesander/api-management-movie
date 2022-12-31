@@ -55,6 +55,10 @@ class MovieController extends Controller
         return $this->serviceMovie->findByName($data['name']);
     }
 
+    public function listAll(){
+        return $this->serviceMovie->listAll();
+    }
+
     /**
      * Display the specified resource.
      *
