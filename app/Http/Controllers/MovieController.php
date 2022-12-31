@@ -49,6 +49,12 @@ class MovieController extends Controller
         return $this->serviceMovie->create($request->all());
     }
 
+    public function findByName(Request $request)
+    {
+        $data = $request->all();
+        return $this->serviceMovie->findByName($data['name']);
+    }
+
     /**
      * Display the specified resource.
      *
