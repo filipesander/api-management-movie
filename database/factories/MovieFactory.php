@@ -17,7 +17,11 @@ class MovieFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "title"=> fake()->name(),
+            "description"=> fake()->name(),
+            "category"=> fake()->name(),
+            "duration"=> fake()->name(),
+            "classification"=> fake()->name(),
         ];
     }
 }
