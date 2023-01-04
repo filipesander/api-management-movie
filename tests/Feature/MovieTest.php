@@ -116,4 +116,25 @@ class MovieTest extends TestCase
         $response->assertStatus(201);
     }
 
+    public function test_list_all()
+    {
+
+        Movie::factory(7)->create();
+
+        $response = $this->getJson("/api/movie/list");
+
+        $response->assertJson(function(AssertableJson $json) {
+
+            $arrayMovie = $json->toArray()['data'];
+
+            $json->whereAllType([
+                "data.0.id"  => "integer"
+            ])->etc();
+
+            $this->assertCount(5, $arrayMovie);
+        });
+
+        $response->assertStatus(200);
+    }
+
 }
