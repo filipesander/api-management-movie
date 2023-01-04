@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/movie' , [MovieController::class, 'store'] );
+Route::post('/movie' , [MovieController::class, 'create'] );
 Route::get('/movie' , [MovieController::class, 'findByTitle'] );
 Route::get('/movie/list', [MovieController::class, 'listAll']);
 Route::get('/movie/{id}', [MovieController::class, 'findById']);

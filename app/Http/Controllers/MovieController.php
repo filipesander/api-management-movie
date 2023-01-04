@@ -16,7 +16,7 @@ class MovieController extends Controller
         $this->serviceMovie = new MovieService();
     }
 
-    public function store(Request $request)
+    public function create(Request $request)
     {
         return $this->serviceMovie->create($request->all());
     }
