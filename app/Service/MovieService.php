@@ -5,10 +5,10 @@ namespace App\Service;
 use App\Models\Movie;
 use App\Service\Contracts\ICreate;
 use App\Service\Contracts\IFindById;
-use App\Service\Contracts\IFindByName;
+use App\Service\Contracts\IFindByTitle;
 use App\Service\Contracts\IListAll;
 
-class MovieService implements ICreate, IFindByName, IListAll, IFindById{
+class MovieService implements ICreate, IFindByTitle, IListAll, IFindById{
 
     // TODO Não pode cadastrar mesmo nome
     public function create(mixed $data): Movie
@@ -16,9 +16,9 @@ class MovieService implements ICreate, IFindByName, IListAll, IFindById{
         return Movie::create($data);
     }
 
-    public function findByName(string $name): Movie|null
+    public function findByTitle(string $title): Movie|null
     {
-        $response = Movie::where('name', $name)->first();
+        $response = Movie::where('title', $title)->first();
         return $response;
     }
 

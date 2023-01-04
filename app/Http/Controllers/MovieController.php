@@ -21,10 +21,10 @@ class MovieController extends Controller
         return $this->serviceMovie->create($request->all());
     }
 
-    public function findByName(Request $request)
+    public function findByTitle(Request $request)
     {
         $data = $request->all();
-        $result = $this->serviceMovie->findByName($data['name']);
+        $result = $this->serviceMovie->findByTitle($data['title']);
 
         if (empty($result)) {
             return response()->json(['error' => 'Movies Not Found'], 404);
