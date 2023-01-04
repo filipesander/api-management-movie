@@ -10,7 +10,6 @@ use App\Service\Contracts\IListAll;
 
 class MovieService implements ICreate, IFindByTitle, IListAll, IFindById{
 
-    // TODO Não pode cadastrar mesmo nome
     public function create(mixed $data): Movie
     {
         return Movie::create($data);
