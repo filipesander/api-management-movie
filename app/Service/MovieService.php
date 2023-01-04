@@ -27,10 +27,10 @@ class MovieService implements ICreate, IFindByTitle, IListAll, IFindById{
         return Movie::paginate(5);
     }
 
-    public function findById(int $id): Movie
+    public function findById(int $id): mixed
     {
-        $responseId = Movie::where('id', $id)->first();
-        return $responseId;
+        $response = Movie::where('id', $id)->first();
+        return $response;
     }
 
 

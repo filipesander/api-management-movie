@@ -27,7 +27,7 @@ class MovieController extends Controller
         $result = $this->serviceMovie->findByTitle($data['title']);
 
         if (empty($result)) {
-            return response()->json(['error' => 'Movies Not Found'], 404);
+            return response()->json(['error' => 'Movie Not Found'], 404);
         }
 
         return $result;
@@ -38,9 +38,15 @@ class MovieController extends Controller
         return $this->serviceMovie->listAll();
     }
 
-    public function findById($id): Movie
+    public function findById($id): mixed
     {
-        return $this->serviceMovie->findById($id);
+        $result = $this->serviceMovie->findById($id);
+
+        if(empty($result)){
+            return response()->json(['error' => 'Movie Not Found'], 404);
+        }
+
+        return $result;
     }
 
 }
