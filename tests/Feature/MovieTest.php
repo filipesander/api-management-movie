@@ -80,4 +80,40 @@ class MovieTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_create()
+    {
+        $movie = [
+            "title"             => "Rede Social",
+            "description"       => "Um estudante Mark Zuck",
+            "category"          => "Drama",
+            "duration"          => "2:15h",
+            "classification"    => "12 anos"
+        ];
+
+        $response = $this->postJson("/api/movie", $movie);
+
+        $response->assertJson(function(AssertableJson $json) use($movie) {
+
+            $json->whereAllType([
+                "title"           => "string",
+                "description"     => "string",
+                "category"        => "string",
+                "duration"        => "string",
+                "classification"  => "string",
+            ])->etc();
+
+            $json->whereAll([
+                "title"           => $movie['title'],
+                "description"     => $movie['description'],
+                "category"        => $movie['category'],
+                "duration"        => $movie['duration'],
+                "classification"  => $movie['classification'],
+            ]);
+
+        });
+
+        $response->assertStatus(201);
+    }
+
 }
